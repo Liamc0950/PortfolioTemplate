@@ -1,0 +1,54 @@
+.carousel-item {
+  height: 100vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.navbar {
+  padding-left: 0%;
+  padding-right: 0%;
+  padding-top: 0%;
+  padding-bottom: 0%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+a{
+  color:white;
+}
+
+.boxed {
+  border: 1px;
+  background-color: rgba(0,0,0,0.5);
+  width: 30%;
+}
+
+.dark-boxed {
+  padding-left: 0%;
+  padding-right: 0%;
+  padding-top: 0%;
+  padding-bottom: 0%;
+  border: 1px;
+  background-color: rgba(0,0,0,0.9);
+  width: 30%;
+}
+
+.carousel {
+  padding-left: 0%;
+  padding-right: 0%;
+  padding-top: 0%;
+  padding-bottom: 0%;
+}
+
+.show-title {
+  padding-top: 30%;
+  color: white;
+}
+
+.show-info {
+  padding-top: 10%;
+  color: white;
+}
