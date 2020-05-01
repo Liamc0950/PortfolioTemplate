@@ -197,7 +197,7 @@ MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 
 
 
-DEFAULT_FILE_STORAGE = 'Portfolio.storage_backends.MediaStorage'
+DEFAULT_FILE_STORAGE = 'Portfolio.settings.storage_backends.MediaStorage'
 
 
 django_heroku.settings(locals())
