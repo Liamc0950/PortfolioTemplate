@@ -2,22 +2,31 @@
 
 from django.db import models
 
+class TimeStampMixin(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
+
+
 class Department(models.Model):
-	dept_name = models.CharField(max_length=64, default="Null")
+	name = models.CharField(max_length=64, default="Null")
 
 	def __str__(self):
-		return self.dept_name;
+		return self.name;
 
 	#Return all shows where department is this department instance
 	def getShows(self):
 		return Show.objects.filter(department=self)
 
 #Show - the main project element of the portfolio
-class Show(models.Model):
+class Show(TimeStampMixin):
 	#Show title
-	title = models.CharField(max_length=64)
+	title = models.CharField(max_length=64, default="Show Title")
 	#Show detail text - should be a short description
-	detail_text = models.CharField(max_length=512)
+	detail_text = models.CharField(max_length=512, blank=True)
 	#The portfolio owner's role in the project, i.e. Lighting Designer, Scenic Designer
 	#This ForeignKey field allows for shows to be filtered by department
 	department = models.ForeignKey(Department, on_delete=models.CASCADE)
@@ -37,8 +46,6 @@ class Show(models.Model):
 	sort_order = models.IntegerField(unique=True)
 	#Image file for the image to appear on the landing carousel
 	cover_image = models.ImageField(default="default.png")
-	#Date created
-	pub_date = models.DateTimeField('date published')
 
 	#Return the title of the show
 	def __str__(self):
@@ -49,7 +56,7 @@ class Show(models.Model):
 
 
 #Image to be shown on a show's detail page
-class Image(models.Model):
+class Image(TimeStampMixin):
 	#Show this image belongs to
 	show = models.ForeignKey(Show, on_delete=models.CASCADE)\
 	#Image caption

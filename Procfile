@@ -1,1 +1,1 @@
-web: gunicorn LiamCorleyPortfolio.wsgi --log-file -
+web: gunicorn PortfolioTemplate.wsgi --log-file -
