@@ -58,9 +58,9 @@ class Show(TimeStampMixin):
 #Image to be shown on a show's detail page
 class Image(TimeStampMixin):
 	#Show this image belongs to
-	show = models.ForeignKey(Show, on_delete=models.CASCADE)\
+	show = models.ForeignKey(Show, on_delete=models.CASCADE)
 	#Image caption
-	caption = models.CharField(max_length=200)
+	caption = models.CharField(max_length=200, blank=True)
 	#Image file
 	image = models.ImageField(default="default.png")
 	#Order to appear in detail page carousel
