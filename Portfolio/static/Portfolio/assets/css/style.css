@@ -4,9 +4,13 @@ Main css file
 
 */
 
+body{
+  background-color: rgb(0, 0, 0);
+}
+
 
 .carousel-item {
-  height: 100vh;
+  height: 100%;
   min-height: 350px;
   background: no-repeat center center scroll;
   -webkit-background-size: cover;
@@ -14,6 +18,15 @@ Main css file
   -o-background-size: cover;
   background-size: cover;
 }
+
+.carousel-img {
+  position: absolute;   
+  top: 50%;
+  padding-left: 5%;
+  padding-right: 5%;
+  transform: translateY(-50%);
+}
+
 
 .no-gutters{
   padding-left: 0%;
@@ -46,6 +59,11 @@ h4{
   font-size:3vw;
 }
 
+h3{
+  margin-top: 0em;
+  margin-bottom: 0em;
+}
+
 .boxed {
   border: 1px;
   background-color: rgba(0,0,0,0.5);
@@ -58,7 +76,7 @@ h4{
   padding-bottom: 0%;
   border: 1px;
   background-color: rgba(0,0,0,0.9);
-  width: 30%;
+  width: 100%;
 }
 
 .carousel {
@@ -68,8 +86,15 @@ h4{
   padding-bottom: 0%;
 }
 
+.detailCarousel {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
 .show-title {
-  padding-top: 30%;
+  margin-top: auto;
   color: white;
 }
 
