@@ -16,7 +16,7 @@ class ImageInline(admin.TabularInline):
 #Define attributes of ShowAdmin
 class ShowAdmin(admin.ModelAdmin):
     #Set fields to display in Show list
-    list_display = ('title', 'department', 'pub_date')
+    list_display = ('title', 'department', 'created_at')
     #Add ImageInLine to Show create
     inlines = [ImageInline]
 

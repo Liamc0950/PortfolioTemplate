@@ -1,83 +1,79 @@
 <!--LIAM CORELY \\ 2020-->
 <!--show_detail html file, displays a carousel of Images related to the show as well as some text info on the show -->
 
+<!--Show title-->
 
 <div class="row">
-	
-	<div id="carouselExampleIndicators" class="col carousel slide no-gutters" data-ride="carousel">
-		<div class="carousel-inner" role="listbox">
-			{% if show %}
-				{% for img in show.getImages %}
-					{% if img.sort_order == 1 %}
-						<!-- Slide One - Set the background image for this slide in the line below -->
-							<div class="carousel-item active" style="background-image: url({{img.image.url}})">
-								<div class="carousel-caption d-none d-md-block">
-									<div class="row">
-										<div class="col"></div>
-										<div class="col-4 boxed"><h4 class="display-6">{{img.caption|upper}}</h4></div>
-										<div class="col"></div>	
-									</div>
-								</div>
-							</div>
-					{% else %}
-							<div class="carousel-item" style="background-image: url({{img.image.url}})">
-								<div class="carousel-caption d-none d-md-block">
-									<div class="row">
-										<div class="col"></div>
-										<div class="col-4 boxed"><h4 class="display-6">{{img.caption|upper}}</h4></div>
-										<div class="col"></div>	
-									</div>
-								</div>
-							</div>
-					{% endif %}
-				{% endfor %}
-			{% else %}
-				<p>This show is not available.</p>
-			{% endif %}
-
-		</div>
-		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-			</a>
-		<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-	</div>
-
-	<!--Info Sidebar-->
-	<div class="col-3 dark-boxed no-gutters">
-		<div class="row">
-			<!--Show title-->
-			<div class="col"></div>
-			<div class="col-4 show-title"><h2>{{ show.title|upper }}</h2></div>
-			<div class="col"></div>
-		</div>
-		<div class="row">
-			<!--Show basic info-->
-			<div class="col"></div>
-			<div class="col-8 show-info">
-				{% if show.dir %}      <h5>DIRECTOR    ...    {{ show.dir|upper }}</h5> {% endif %}
-				{% if show.sm %}  <h5>STAGE MANAGER    ...    {{ show.sm|upper }}</h5> {% endif %}
-				{% if show.cd %} <h5>COSTUMES    ...    {{ show.cd|upper }}</h5> {% endif %}
-				{% if show.sd %}  <h5>SCENERY    ...    {{ show.sd|upper }}</h5> {% endif %}
-				{% if show.ld %} <h5>LIGHTING    ...    {{ show.ld|upper }}</h5> {% endif %}
-				{% if show.projd %} <h5>PROJECTIONS    ...    {{ show.projd|upper }}</h5> {% endif %}
-				{% if show.props %} <h5>PROPS    ...    {{ show.props|upper }}</h5> {% endif %}
-				{% if show.photo %} <h5>PHOTOGRAPHY    ...    {{ show.photo|upper }}</h5> {% endif %}
-			</div>
-			<div class="col"></div>
-		</div>
-		<div class="row">
-			<!--Show comments-->
-			<div class="col"></div>
-			<div class="col-8 show-info">
-				<p>{{show.detail_text}}</p>
-			</div>
-			<div class="col"></div>
-		</div>
-
-	</div>
-
+	<div class="col-4 show-title centered"><h1>{{ show.title|upper }}</h1></div>
 </div>
+
+<!--Image Carousel-->
+<div class="row">
+	<div class="col-xs-2 col-md-8 detailCarousel">
+		<div id="detailCarousel" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner" role="listbox">
+				{% if show %}
+					{% for img in show.getImages %}
+						{% if img.sort_order == 1 %}
+							<!-- Slide One - Set the background image for this slide in the line below -->
+							<div class="carousel-item active">
+									<img class="img-fluid carousel-img" src="{{img.image.url}}" alt="{{img.caption|upper}}">
+									<div class="carousel-caption">
+										<h4>{{img.caption|upper}}</h4>
+									</div>
+							</div>
+						{% else %}
+							<div class="carousel-item">
+									<img class="img-fluid carousel-img" src="{{img.image.url}}" alt="{{img.caption|upper}}">
+									<div class="carousel-caption">
+										<h4>{{img.caption|upper}}</h4>
+									</div>
+							</div>
+				{% endif %}
+					{% endfor %}
+				{% else %}
+					<p>This show is not available.</p>
+				{% endif %}
+
+			</div>
+			<a class="carousel-control-prev" href="#detailCarousel" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+				</a>
+			<a class="carousel-control-next" href="#detailCarousel" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+</div>
+<!--Show basic info-->
+<div class="row">
+	<div class="col-8 show-info centered">
+		{% if show.dir %}   <h3>DIRECTOR    ...    {{ show.dir|upper }}</h3> {% endif %}
+		{% if show.sm %}    <h3>STAGE MANAGER    ...    {{ show.sm|upper }}</h3> {% endif %}
+		{% if show.cd %}    <h3>COSTUMES    ...    {{ show.cd|upper }}</h3> {% endif %}
+		{% if show.sd %}    <h3>SCENERY    ...    {{ show.sd|upper }}</h3> {% endif %}
+		{% if show.ld %}    <h3>LIGHTING    ...    {{ show.ld|upper }}</h3> {% endif %}
+		{% if show.projd %} <h3>PROJECTIONS    ...    {{ show.projd|upper }}</h3> {% endif %}
+		{% if show.props %} <h3>PROPS    ...    {{ show.props|upper }}</h3> {% endif %}
+		{% if show.photo %} <h3>PHOTOGRAPHY    ...    {{ show.photo|upper }}</h3> {% endif %}
+	</div>
+</div>
+<!--Show comments-->
+<div class="row">
+	<div class="col-8 show-info centered">
+		<p>{{show.detail_text}}</p>
+	</div>
+</div>
+
+{% block extra_js %}
+
+<!--Remove fixed-top from Nav -->
+<script>
+	$( document ).ready(function() {
+		$( "nav" ).removeClass( "fixed-top" );
+	});
+</script>
+
+{% endblock extra_js %}
